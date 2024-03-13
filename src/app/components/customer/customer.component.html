@@ -1,0 +1,11 @@
+<div class="list-group"style="height: 200px; overflow-y: auto; position: relative;" >
+    <div style="position: sticky; top: 0; background-color: #e7540a; z-index: 1; padding: 5px;">
+        Müşteriler</div>
+    
+      <div *ngFor="let customer of customers">
+        <a href="#" class="list-group-item list-group-item-action">{{customer.companyName}}</a>
+      </div>
+    <!-- <a href="#" class="list-group-item list-group-item-action" >{{customer.id}}</a> -->
+    
+    
+  </div>

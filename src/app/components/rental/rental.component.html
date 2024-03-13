@@ -1,0 +1,28 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <!-- <td>Id</td> -->
+            <td>Araba adı</td>
+            <td>Müşteri ismi</td>
+            <td>Teslim edilen Tarih</td>
+            <td>Teslim alınan Tarih</td>
+        </tr>
+    </thead>
+    <tr *ngFor="let rental  of rentals">
+        <!-- <td>{{rental.id}}</td> -->
+        <td>{{rental.carName}}</td>
+        <td>{{rental.customerName}}</td>
+        <td>{{rental.rentalDate  | date: 'yyyy-MM-dd' }}</td>
+        <td>
+            <ng-container *ngIf="rental.returnDate; else notReturned">
+                {{rental.returnDate  | date: 'yyyy-MM-dd' }}
+            </ng-container>
+            <ng-template #notReturned>
+                Teslim Edilmemiş
+            </ng-template>
+        </td>
+        
+    </tr>
+</table>
