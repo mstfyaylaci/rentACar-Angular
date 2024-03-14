@@ -4,16 +4,10 @@ import { CarComponent } from './components/car/car.component';
 
 const routes: Routes = [
 
-  {
-    path:"",pathMatch:"full" ,component:CarComponent
-  },
-  {
-    path:"cars",component:CarComponent
-  }
-  ,
-  {
-    path:"cars/brand/:brandId",component:CarComponent
-  }
+  { path:"",pathMatch:"full" ,component:CarComponent},
+  {path:"cars",component:CarComponent},
+  {path:"cars/brand/:brandId",component:CarComponent},
+  {path:"cars/color/:colorId",component:CarComponent},
 ];
 
 @NgModule({

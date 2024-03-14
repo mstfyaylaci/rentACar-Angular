@@ -3,10 +3,20 @@
     <div style="position: sticky; top: 0; background-color: #2ce80b; z-index: 1; padding: 5px;">
         Renkler</div>
     
-      <div *ngFor="let color of colors">
-        <a href="#" class="list-group-item list-group-item-action">{{color.colorName}}</a>
-      </div>
+        <ul class="list-group "style="height: 200px; overflow-y: auto; position: relative;">
+   
+          <li (click)="setCurrentColors(color)" 
+          routerLink="/cars/color/{{color.id}}"
+          *ngFor="let color of colors" 
+          [class]="getCurrentColor(color)">
+          {{color.colorName}}</li>
+         
+        </ul>
     <!-- <a href="#" class="list-group-item list-group-item-action" >{{brand.id}}</a> -->
     
     
   </div>
+
+
+  
+  
