@@ -10,8 +10,9 @@ import { BrandService } from '../../services/brand.service';
 export class BrandComponent implements OnInit{
 
   brands:Brand[]=[];
-  dataLoad=false;
   currentBrand:Brand
+  dataLoad=false;
+  
   
 
   /**
@@ -32,7 +33,7 @@ export class BrandComponent implements OnInit{
     });
   }
 
-  setCurrentBrands(brand:Brand){
+  setCurrentBrand(brand:Brand){
     
     this.currentBrand=brand
     

@@ -1,7 +1,7 @@
 
   <ul class="list-group "style="height: 200px; overflow-y: auto; position: relative;">
     <li [class]="getAllBrand()"routerLink="/cars">Tüm Markalar</li>
-      <li (click)="setCurrentBrands(brand)" 
+      <li (click)="setCurrentBrand(brand)" 
       routerLink="/cars/brand/{{brand.id}}"
       *ngFor="let brand of brands" 
       [class]="getCurrentBrand(brand)">
