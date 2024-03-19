@@ -1,1 +1,184 @@
-<p>car-detail works!</p>
+<!-- <div clasS="row">
+
+  <div class="col-md">
+    <div class="row mt-1" style="margin-left: 22%">
+      <div
+        *ngFor="let car of carDetails"
+        class="card mt-2 mr-2"
+        style="width: 38rem; margin-right: 10px"
+      >
+        <img
+          *ngIf="car.imagePath"
+          [src]="baseUrl + car.imagePath"
+          class="card-img-top"
+          style="object-fit: cover"
+          width="100"
+          height="70%"
+        />
+
+        <img
+          *ngIf="!car.imagePath"
+          [src]="baseUrl + 'Default.png'"
+          class="card-img-top"
+          style="object-fit: cover"
+          width="100"
+          height="50%"
+        />
+
+        <div class="card-body text-center">
+          <h4 class="cart-title">{{ car.brandName + " " + car.carName }}</h4>
+        </div>
+
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item">
+            <i><b>Model Yılı | </b></i>{{ car.modelYear }}
+          </li>
+          <li class="list-group-item">
+            <i><b>Marka | </b></i>{{ car.brandName }}
+          </li>
+          <li class="list-group-item">
+            <i><b>Renk | </b></i>{{ car.colorName }}
+          </li>
+          <li class="list-group-item">
+            <i><b>Açıklama | </b></i>{{ car.description }}
+          </li>
+          <li class="list-group-item">
+            <i><b>Günlük Fiyat: </b></i>{{ car.dailyPrice + " ₺" }}
+          </li>
+          <li class="list-group-item">
+            <i><b>Aylık %20 İndirimli Fiyat: </b></i
+            >{{ car.dailyPrice * 30 * 0.8 + " ₺" }}
+          </li>
+        </ul>
+
+        <div class="card-body">
+          <div class="row">
+            <button
+              type="button"
+              class="btn btn-success"
+              routerLink="/cars/payment/{{ car.carId }}"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
+              Aracı Kirala
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Kapat
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="card mb-3" *ngFor="let car of carDetails">
+    <div class="row g-0">
+      <div class="col-md-4 mt-5">
+        <div id="carouselExampleIndicators" class="carousel slide">
+          
+          <div class="carousel-inner">
+            <div class="carousel-item active" *ngFor="let image of carImageDetail">
+              <img 
+                *ngIf="car.imagePath"
+                [src]="baseUrl + image.imagePath"
+                class="card-img-top"
+                style="object-fit: cover"
+                width="100"
+                height="78%"
+              />
+
+              <img
+                *ngIf="!image.imagePath"
+                [src]="baseUrl + 'Default.png'"
+                class="card-img-top"
+                style="object-fit: cover"
+                width="100"
+                height="50%"
+              />
+            </div>
+            
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ car.brandName + " " + car.carName }}</h5>
+          <ul class="list-group list-group-flush text-left">
+            <li class="list-group-item">
+              <i><b>Model Yılı | </b></i>{{ car.modelYear }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Marka | </b></i>{{ car.brandName }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Renk | </b></i>{{ car.colorName }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Açıklama | </b></i>{{ car.description }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Günlük Fiyat: </b></i>{{ car.dailyPrice + " ₺" }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Aylık %20 İndirimli Fiyat: </b></i
+              >{{ car.dailyPrice * 30 * 0.8 + " ₺" }}
+            </li>
+          </ul>
+          <div class="row">
+            <button
+              type="button"
+              class="btn btn-success"
+              routerLink="/cars/payment/{{ car.carId }}"
+            >
+              Aracı Kirala
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

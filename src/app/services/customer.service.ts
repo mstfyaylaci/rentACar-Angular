@@ -19,10 +19,10 @@ export class CustomerService {
     return this.httpClient.get<ListResponseModel<Customer>>(newPath)
   }
 
-  getCustomerById(customerId:Number):Observable<ListResponseModel<Customer>>{
-    let newPath=this.apiUrl+"Customers/getbyid?id="+customerId
+  // getCustomerById(customerId:Number):Observable<ListResponseModel<Customer>>{
+  //   let newPath=this.apiUrl+"Customers/getbyid?id="+customerId
     
-    return this.httpClient
-    .get<ListResponseModel<Customer>>(newPath)
-  }
+  //   return this.httpClient
+  //   .get<ListResponseModel<Customer>>(newPath)
+  // }
 }

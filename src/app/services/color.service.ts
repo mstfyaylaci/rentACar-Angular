@@ -19,10 +19,10 @@ export class ColorService {
     let newPath=this.apiUrl+"Colors/getall"
     return this.httpClient.get<ListResponseModel<Color>>(newPath)
   }
-  getColorById(colorId:Number):Observable<ListResponseModel<Color>>{
-    let newPath=this.apiUrl+"Colors/getbyid?id="+colorId
+  // getColorById(colorId:Number):Observable<ListResponseModel<Color>>{
+  //   let newPath=this.apiUrl+"Colors/getbyid?id="+colorId
     
-    return this.httpClient
-    .get<ListResponseModel<Color>>(newPath)
-  }
+  //   return this.httpClient
+  //   .get<ListResponseModel<Color>>(newPath)
+  // }
 }

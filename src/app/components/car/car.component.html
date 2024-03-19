@@ -1,29 +1,152 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-    <span class="sr-only"></span>
+<div class="row">
+  <div class="col-md-2">
+    <select class="form-select" [(ngModel)]="selectedBrand">
+      <option value="0" selected>Marka Seç</option>
+      <option [value]="brand.id" *ngFor="let brand of brands">
+        {{ brand.brandName }}
+      </option>
+    </select>
   </div>
+  <div class="col-md-2">
+    <select class="form-select" [(ngModel)]="selectedColor">
+      <option value="0" selected>Renk Seç</option>
+      <option [value]="color.id" *ngFor="let color of colors">
+        {{ color.colorName }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-2" class="d-grid gap-1 col-3 mx-4">
+    <button
+    (click)="filterCars()"
+      type="submit"
+      class="btn btn-success btn-"
+      
+      style="width: 100%"
+    >
+      Filtrele
+    </button>
+  </div>
+  <input
+    class="form-control"
+    class="col-md-3"
+    [(ngModel)]="carFilterText"
+    id="carFilterText"
+    type="text"
+    placeholder="Arama ifadesi yazınız."
+  />
+</div>
 
-<table *ngIf="dataLoaded!=false" class="table ">
-    
-        <thead class="table-primary" >
-            <tr>
-                <td>Id</td>
-                <td>Marka Adı</td>
-                <td>Araba adı</td>
-                <td>Renk</td>
-                <td>Model yılı </td>
-                <td>Günlük fiyat  </td>
-                <td>Açıklama  </td>
-            </tr>
-        </thead>
-    
-  
-    <tr *ngFor="let car  of carsDetails">
-        <td>{{car.carId}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.carName}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.modelYear}}</td>
-        <td>{{car.dailyPrice}} ₺</td>
-        <td>{{car.description}}</td>
+<!-- <div class="row mt-4" style="margin-left: 1%">
+  <div
+    *ngFor="let car of carsDetails"
+    class="card mt-2 mr-2"
+    style="width: 18rem; margin-right: 10px"
+  >
+    <img
+      *ngIf="car.imagePath"
+      [src]="baseUrl + car.imagePath"
+      class="card-img-top"
+      style="object-fit: cover"
+      width="100"
+      height="50%"
+    />
+
+    <img
+      *ngIf="!car.imagePath"
+      [src]="baseUrl + 'Default.png'"
+      class="card-img-top"
+      style="object-fit: cover"
+      width="100"
+      height="50%"
+    />
+
+    <div class="card-body">
+      <h4 class="cart-title">{{ car.brandName + " " + car.carName }}</h4>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <i><b>Model Yılı | </b></i>{{ car.modelYear }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Marka | </b></i>{{ car.brandName }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Renk | </b></i>{{ car.colorName }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Açıklama | </b></i>{{ car.description }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Günlük Fiyat: </b></i>{{ car.dailyPrice + " ₺" }}
+      </li>
+      <li class="list-group-item">
+        <i><b>Aylık %20 İndirimli Fiyat: </b></i
+        >{{ car.dailyPrice * 30 * 0.8 + " ₺" }}
+      </li>
+    </ul>
+
+    <div class="card-body">
+      <div class="row">
+        <button
+          type="button"
+          class="btn btn-success"
+          routerLink="/cars/carDetail/{{ car.carId }}"
+        >
+          Araç Detayı
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Marka</th>
+      <th>Araç İsmi</th>
+      <th>Model yılı</th>
+      <th>Renk</th>
+      <th>Günlük fiyat</th>
+
+      <th></th>
     </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of carsDetails |filterCar:carFilterText">
+      <td>
+        <img
+          *ngIf="car.imagePath"
+          [src]="baseUrl + car.imagePath"
+          style="object-fit: cover"
+          width="100"
+          height="50%"
+        />
+
+        <img
+          *ngIf="!car.imagePath"
+          [src]="baseUrl + 'Default.png'"
+          style="object-fit: cover"
+          width="100"
+          height="50%"
+        />
+      </td>
+      <td>{{ car.brandName }}</td>
+      <td>{{ car.carName }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.colorName }}</td>
+      <td>{{ car.dailyPrice }} ₺</td>
+
+      <td>
+        <button
+          routerLink="/cars/carDetail/{{ car.carId }}"
+          type="button"
+          class="btn btn-success"
+        >
+          Araç Detayı
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

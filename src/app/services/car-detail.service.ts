@@ -9,14 +9,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CarDetailService {
 
-  apiUrl='https://localhost:44327/api/';
+  apiUrl='https://localhost:44327/api/Cars/';
   constructor(private httpClient:HttpClient) { }
 
 
-  getAllCars():Observable<ListResponseModel<CarDetail>>{
+  getAllCarDetails():Observable<ListResponseModel<CarDetail>>{
 
-    let newPath=this.apiUrl+"Cars/getcardetails"
+    let newPath=this.apiUrl+"getcardetails"
     return this.httpClient
     .get<ListResponseModel<CarDetail>>(newPath)
+  }
+
+  getCarDetailsByCarId(carId:number):Observable<ListResponseModel<CarDetail>>{
+
+    let newPath=this.apiUrl+"getcardetailsid?carId="+carId
+    return this.httpClient
+            .get<ListResponseModel<CarDetail>>(newPath)
+    
   }
 }

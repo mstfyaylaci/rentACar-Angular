@@ -13,6 +13,8 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { FormsModule } from '@angular/forms';
+import { FilterCarPipe } from './pipes/filter-car.pipe';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,15 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     CarImageComponent,
     CustomerComponent,
     NaviComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    FilterCarPipe,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
